@@ -60,12 +60,12 @@ class App extends Component {
     return (
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
-          <Link to={"/"} className="navbar-brand">
+          <Link to={"/"} className="navbar-brand m-auto">
             ak-maj
           </Link>
-          <div className="navbar-nav mr-auto">
+          <div className="navbar-nav m-auto">
             <li className="nav-item">
-              <Link to={"/home"} className="nav-link">
+              <Link to={"/home"} className="nav-link ">
                 Home
               </Link>
             </li>
