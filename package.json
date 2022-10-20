@@ -4,11 +4,12 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=production node app.js",
+    "start-node": "node app.js",
     "server": "nodemon app.js",
     "frontend": "npm run start --prefix frontend",
     "frontend:install": "npm install --prefix frontend",
     "frontend:build": "npm run build --prefix frontend",
+    "start": "concurrently \"npm run start-node\" \"npm run frontend\"",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
   },
   "repository": {
