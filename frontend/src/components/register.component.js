@@ -8,12 +8,10 @@ export default class Register extends Component {
         this.handleRegister = this.handleRegister.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
         this.onChangeEmail = this.onChangeEmail.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
 
         this.state = {
             username: "",
             email: "",
-            password: "",
             successful: false,
             message: ""
         };
@@ -30,11 +28,11 @@ export default class Register extends Component {
         });
     }
 
-    onChangePassword(e) {
-        this.setState({
-            password: e.target.value
-        });
-    }
+    // onChangePassword(e) {
+    //     this.setState({
+    //         password: e.target.value
+    //     });
+    // }
 
     handleRegister(e) {
         e.preventDefault();
@@ -46,8 +44,7 @@ export default class Register extends Component {
 
         AuthService.register(
             this.state.username,
-            this.state.email,
-            this.state.password
+            this.state.email
         ).then(
             response => {
                 this.setState({
@@ -113,7 +110,7 @@ export default class Register extends Component {
                                     />
                                 </div>
 
-                                <div className="form-group">
+                                {/* <div className="form-group">
                                     <label htmlFor="password">Password</label>
                                     <input
                                         type="password"
@@ -123,7 +120,7 @@ export default class Register extends Component {
                                         onChange={this.onChangePassword}
                                         required
                                     />
-                                </div>
+                                </div> */}
 
                                 <div className="form-group">
                                     <button className="btn btn-primary btn-block">Sign Up</button>

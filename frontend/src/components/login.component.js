@@ -10,11 +10,9 @@ class Login extends Component {
         super(props);
         this.handleLogin = this.handleLogin.bind(this);
         this.onChangeUsername = this.onChangeUsername.bind(this);
-        this.onChangePassword = this.onChangePassword.bind(this);
 
         this.state = {
             username: "",
-            password: "",
             loading: false,
             message: ""
         };
@@ -25,11 +23,11 @@ class Login extends Component {
         });
     }
 
-    onChangePassword(e) {
-        this.setState({
-            password: e.target.value
-        });
-    }
+    // onChangePassword(e) {
+    //     this.setState({
+    //         password: e.target.value
+    //     });
+    // }
 
     handleLogin(e) {
         e.preventDefault();
@@ -39,7 +37,7 @@ class Login extends Component {
             loading: true
         });
 
-        AuthService.login(this.state.username, this.state.password).then(
+        AuthService.login(this.state.username).then(
             () => {
                 this.props.router.navigate("/profile");
                 window.location.reload();
@@ -87,7 +85,7 @@ class Login extends Component {
                             />
                         </div>
 
-                        <div className="form-group">
+                        {/* <div className="form-group">
                             <label htmlFor="password">Password</label>
                             <input
                                 type="password"
@@ -97,7 +95,7 @@ class Login extends Component {
                                 onChange={this.onChangePassword}
                                 required
                             />
-                        </div>
+                        </div> */}
 
                         <div className="form-group">
                             <button
