@@ -11,8 +11,6 @@
     "frontend:build": "npm run build --prefix frontend",
     "start": "concurrently \"npm run start-node\" \"npm run frontend\"",
     "dev": "concurrently \"npm run server\" \"npm run frontend\"",
-    "heroku-postbuild": "concurrently NPM_CONFIG_PRODUCTION=false \"npm run frontend:install\"  \"npm run frontend:build\""
-
   },
   "repository": {
     "type": "git",
