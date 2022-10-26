@@ -7,6 +7,7 @@
     "start": "node app.js",
     "server": "nodemon app.js",
     "frontend": "npm run start --prefix frontend",
+    "frontend:deploy": "concurrently \"npm run frontend:install\" \"npm run frontend:build\"",
     "frontend:install": "npm install --prefix frontend",
     "frontend:build": "npm run build --prefix frontend",
     "dev": "concurrently \"npm run server\" \"npm run frontend\""
