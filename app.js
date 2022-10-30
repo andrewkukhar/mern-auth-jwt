@@ -82,12 +82,6 @@ db.mongoose
         process.exit();
     });
 // simple route
-// app.get("/", (req, res) => {
-//     res.json({
-//         message: `Welcome to node-auth application.
-//         ${db.ROLES}
-//     ` });
-// });
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
 // set port, listen for requests
