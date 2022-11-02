@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 
 import UserService from "../services/user.service";
-import EventsList from "../components/events-list.component";
+import EventsList from "./events-list.component";
 
 export default class BoardUser extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ export default class BoardUser extends Component {
         return (
             <div className="container">
                 <header className="jumbotron">
-                    <h3>{this.state.content}</h3>
+
                     <EventsList />
                 </header>
             </div>

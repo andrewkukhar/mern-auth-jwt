@@ -14,6 +14,7 @@ import BoardAdmin from "./components/board-admin.component";
 import EventsList from "./components/events-list.component";
 import AddEvent from "./components/add-event.component";
 import Event from "./components/event.component";
+import UserNavbar from "./components/user-navbar.component";
 
 class App extends Component {
   constructor(props) {
@@ -52,15 +53,9 @@ class App extends Component {
       <div>
         <nav className="navbar navbar-expand navbar-dark bg-dark">
           <Link to={"/"} className="navbar-brand m-auto">
-            ak-maj
+            Home
           </Link>
           <div className="navbar-nav m-auto">
-            <li className="nav-item">
-              <Link to={"/home"} className="nav-link ">
-                Home
-              </Link>
-            </li>
-
 
             {showAdminBoard && (
               <li className="nav-item">
@@ -75,22 +70,6 @@ class App extends Component {
                 <Link to={"/user"} className="nav-link">
                   User
                 </Link>
-                <Link to={"/events"} className="nav-link ">
-                  Events
-                </Link>
-                <Link to={"/events/add-event"} className="nav-link ">
-                  New Event
-                </Link>
-                <nav className="navbar navbar-expand">
-                  <div className="navbar-nav m-auto">
-                    <li className="nav-item">
-
-                    </li>
-                    <li className="nav-item">
-
-                    </li>
-                  </div>
-                </nav>
               </li>
             )}
           </div>
@@ -124,6 +103,11 @@ class App extends Component {
             </div>
           )}
         </nav>
+        {currentUser && (
+          <div className="navbar">
+            <UserNavbar />
+          </div>
+        )}
 
         <div className="container mt-3">
           <Routes>
