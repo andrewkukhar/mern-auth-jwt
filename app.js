@@ -6,13 +6,8 @@ const app = express();
 var corsOptions = {
     origin: "http://localhost:8081"
 };
-
 app.use(cors(corsOptions));
-
-// parse requests of content-type - application/json
 app.use(express.json());
-
-// parse requests of content-type - application/x-www-form-urlencoded
 app.use(express.urlencoded({ extended: true }));
 const db = require("./models");
 const Role = db.role;
@@ -38,33 +33,6 @@ function initial() {
 
                 console.log("added 'admin' to roles collection");
             });
-            new Role({
-                name: "staff"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-
-                console.log("added 'staff' to roles collection");
-            });
-            new Role({
-                name: "volunteer"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-
-                console.log("added 'volunteer' to roles collection");
-            });
-            new Role({
-                name: "company"
-            }).save(err => {
-                if (err) {
-                    console.log("error", err);
-                }
-
-                console.log("added 'company' to roles collection");
-            });
         }
     });
 }
@@ -81,10 +49,9 @@ db.mongoose
         console.error("Connection error", err);
         process.exit();
     });
-// simple route
 require('./routes/auth.routes')(app);
 require('./routes/user.routes')(app);
-// set port, listen for requests
+require('./routes/event.routes')(app);
 app.use('/', express.static(path.join(__dirname, 'client', 'build')))
 
 app.get('*', (req, res) => {

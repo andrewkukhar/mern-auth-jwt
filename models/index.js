@@ -7,13 +7,11 @@ db.mongoose = mongoose;
 
 db.user = require("./user.model");
 db.role = require("./role.model");
+db.events = require("./event.model")(mongoose);
 
 db.ROLES = [
     "user",
-    "admin",
-    "staff",
-    "volunteer",
-    "company"
+    "admin"
 ];
 
 module.exports = db;

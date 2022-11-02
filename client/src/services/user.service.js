@@ -16,17 +16,6 @@ class UserService {
         return axios.get(API_URL + 'admin', { headers: authHeader() });
     }
 
-    getStaffBoard() {
-        return axios.get(API_URL + 'staff', { headers: authHeader() });
-    }
-
-    getVolunteerBoard() {
-        return axios.get(API_URL + 'volunteer', { headers: authHeader() });
-    }
-
-    getCompanyBoard() {
-        return axios.get(API_URL + 'company', { headers: authHeader() });
-    }
 }
 
 export default new UserService();

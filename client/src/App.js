@@ -11,9 +11,9 @@ import Home from "./components/home.component";
 import Profile from "./components/profile.component";
 import BoardUser from "./components/board-user.component";
 import BoardAdmin from "./components/board-admin.component";
-import BoardStaff from "./components/board-staff.component";
-import BoardVolunteer from "./components/board-volunteer.component";
-import BoardCompany from "./components/board-company.component";
+import EventsList from "./components/events-list.component";
+import AddEvent from "./components/add-event.component";
+import Event from "./components/event.component";
 
 class App extends Component {
   constructor(props) {
@@ -21,9 +21,6 @@ class App extends Component {
     this.logOut = this.logOut.bind(this);
 
     this.state = {
-      showCompanyBoard: false,
-      showVolunteerBoard: false,
-      showStaffBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     };
@@ -35,10 +32,7 @@ class App extends Component {
     if (user) {
       this.setState({
         currentUser: user,
-        showCompanyBoard: user.roles.includes("ROLE_COMPANY"),
-        showVolunteerBoard: user.roles.includes("ROLE_VOLUNTEER"),
-        showStaffBoard: user.roles.includes("ROLE_STAFF"),
-        showAdminBoard: user.roles.includes("ROLE_ADMIN"),
+        showAdminBoard: user.roles.includes("ROLE_ADMIN")
       });
     }
   }
@@ -46,16 +40,13 @@ class App extends Component {
   logOut() {
     AuthService.logout();
     this.setState({
-      showCompanyBoard: false,
-      showVolunteerBoard: false,
-      showStaffBoard: false,
       showAdminBoard: false,
       currentUser: undefined,
     });
   }
 
   render() {
-    const { currentUser, showAdminBoard, showStaffBoard, showVolunteerBoard, showCompanyBoard } = this.state;
+    const { currentUser, showAdminBoard } = this.state;
 
     return (
       <div>
@@ -70,34 +61,11 @@ class App extends Component {
               </Link>
             </li>
 
+
             {showAdminBoard && (
               <li className="nav-item">
                 <Link to={"/admin"} className="nav-link">
                   Admin Board
-                </Link>
-              </li>
-            )}
-
-            {showStaffBoard && (
-              <li className="nav-item">
-                <Link to={"/staff"} className="nav-link">
-                  Staff Board
-                </Link>
-              </li>
-            )}
-
-            {showVolunteerBoard && (
-              <li className="nav-item">
-                <Link to={"/volunteer"} className="nav-link">
-                  Volunteer Board
-                </Link>
-              </li>
-            )}
-
-            {showCompanyBoard && (
-              <li className="nav-item">
-                <Link to={"/company"} className="nav-link">
-                  Company Board
                 </Link>
               </li>
             )}
@@ -107,6 +75,22 @@ class App extends Component {
                 <Link to={"/user"} className="nav-link">
                   User
                 </Link>
+                <Link to={"/events"} className="nav-link ">
+                  Events
+                </Link>
+                <Link to={"/events/add-event"} className="nav-link ">
+                  New Event
+                </Link>
+                <nav className="navbar navbar-expand">
+                  <div className="navbar-nav m-auto">
+                    <li className="nav-item">
+
+                    </li>
+                    <li className="nav-item">
+
+                    </li>
+                  </div>
+                </nav>
               </li>
             )}
           </div>
@@ -148,11 +132,11 @@ class App extends Component {
             <Route path="/login" element={<Login />} />
             <Route path="/register" element={<Register />} />
             <Route path="/profile" element={<Profile />} />
-            <Route path="/user" element={<BoardUser />} />
+            <Route path="/user/" element={<BoardUser />} />
+            <Route path="/events" element={<EventsList />} />
+            <Route path="/events/add-event" element={<AddEvent />} />
+            <Route path="/events/:id" element={<Event />} />
             <Route path="/admin" element={<BoardAdmin />} />
-            <Route path="/staff" element={<BoardStaff />} />
-            <Route path="/volunteer" element={<BoardVolunteer />} />
-            <Route path="/company" element={<BoardCompany />} />
           </Routes>
         </div>
       </div>
