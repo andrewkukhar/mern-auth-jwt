@@ -36,7 +36,6 @@ export default class BoardUser extends Component {
         return (
             <div className="container">
                 <header className="jumbotron">
-
                     <EventsList />
                 </header>
             </div>

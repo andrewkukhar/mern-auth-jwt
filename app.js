@@ -37,7 +37,7 @@ function initial() {
     });
 }
 db.mongoose
-    .connect(`mongodb+srv://MernAuthJwt:MernAuthJwt@cluster0.hty26ll.mongodb.net/?retryWrites=true&w=majority`, {
+    .connect(`mongodb+srv://NodeMernCrud:NodeMernCrud@cluster0.yuoj0mt.mongodb.net/?retryWrites=true&w=majority`, {
         useNewUrlParser: true,
         useUnifiedTopology: true
     })
